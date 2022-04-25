@@ -1,7 +1,7 @@
 function [letter, corr] = number_matching(bbox)
     [~, number_templates] = read_mask();
     bbox = imresize(bbox, [42 24]);
-    cors = zeros(10);
+    cors = zeros(1,10);
 
     % alphabet matching
     for n=1:10
