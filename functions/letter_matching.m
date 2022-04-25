@@ -5,8 +5,11 @@ function [letter, corr] = letter_matching(bbox)
     
     % alphabet matching
     for n=1:26
+        disp(size(bbox));
+        disp(size(alphabet_templates{1,n}));
         [score, ~, ~] = bfscore(logical(bbox), alphabet_templates{1,n});
         cors(n) = score;
+
     end
 
     % find best match
