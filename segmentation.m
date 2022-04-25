@@ -16,6 +16,10 @@ for k = 1:length(candidates)
 end
 hold off
 
+F = getframe;
+annotated = frame2im(F);
+figure; imshow(annotated);
+
 [roi, bounds, lisencePlate] = locate_plate(g, candidates, MIN_AR, MAX_AR);
 
 figure; imshow(lisencePlate);

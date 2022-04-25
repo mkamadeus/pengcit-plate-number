@@ -1,4 +1,8 @@
 function [roi, lpbounds, cropped] = locate_plate(g, candidates, minAR, maxAR)    
+    roi = imbinarize(g);
+    lpbounds = [];
+    cropped = g;
+    
     for i = 1:length(candidates)
         c = candidates{i};
     

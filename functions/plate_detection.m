@@ -1,17 +1,18 @@
-function [letters] = plate_detection(plate_img)
+function [letters, bboxes] = plate_detection(plate_img)
     % binarize image
     imggray = rgb2gray(plate_img);
     img = imbinarize(imggray);
     
     % close small areas/pixels
     img = bwareaopen(img, 50);
-    waitfor(imshow(img, []));
+%     waitfor(imshow(img, []));
     
     % get image regions and get their properties
     regions = regionprops(img, 'BoundingBox', 'Area', 'Image');
     
     % instantiate cell array
     letters = {};
+    bboxes = {};
     count = 1;
     
     [h, ~] = size(img);
@@ -22,10 +23,11 @@ function [letters] = plate_detection(plate_img)
         object_h = length(regions(i).Image(:,1));
            
         % if region dimension is suited to be a number in plate (approx)
-        if object_w < (h/2) && object_h >(h/3)
+        if object_w > 5 && object_w < (h/2) && object_h >(h/3)
             % get region image, store image
             letter = regions(i).Image;
             letters{count} = letter;
+            bboxes{count} = regions(i).BoundingBox;
             count = count + 1;
         end
     end

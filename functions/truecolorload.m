@@ -5,9 +5,9 @@ function [I, originalMode] = truecolorload(filename)
     [I, map] = imread(filename);
 
     % Convert [0 1] to [0 255] if necessary
-    if ~isinteger(I) && max(I) <= 1
-        I = I * 255;
-    end
+%     if ~isinteger(I) && max(I) <= 1
+%         I = I * 255;
+%     end
 
     % Is truecolor
     if size(I, 3) == 3
