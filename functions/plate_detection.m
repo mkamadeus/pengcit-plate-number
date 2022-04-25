@@ -23,7 +23,7 @@ function [letters, bboxes] = plate_detection(plate_img)
         object_h = length(regions(i).Image(:,1));
            
         % if region dimension is suited to be a number in plate (approx)
-        if object_w > 5 && object_w < (h/2) && object_h >(h/3)
+        if object_w > 3 && object_w < (h/2) && object_h >(h/3)
             % get region image, store image
             letter = regions(i).Image;
             letters{count} = letter;
